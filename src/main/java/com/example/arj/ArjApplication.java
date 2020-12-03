@@ -28,7 +28,7 @@ public class ArjApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:4200","http://127.0.0.1:4200","http://localhost.com:4200","http://fr.localhost.com:4200").allowCredentials(true);
+                registry.addMapping("/**").allowedOrigins("http://localhost:4200","http://127.0.0.1:4200","http://localhost.com:4200","http://fr.localhost.com:4200","http://52.172.150.44").allowCredentials(true);
             }
         };
     }
