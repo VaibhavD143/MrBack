@@ -2,8 +2,10 @@ package com.example.arj.Controller;
 
 import com.example.arj.DAO.AccountDao;
 import com.example.arj.DAO.EmployeeDao;
+import com.example.arj.DAO.UOMDao;
 import com.example.arj.Models.Account;
 import com.example.arj.Models.Employee;
+import com.example.arj.Models.UOM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,9 @@ public class Test {
     @Autowired
     AccountDao accountDao;
 
+    @Autowired
+    UOMDao uomDao;
+
     @PostMapping("/login")
     public ResponseEntity<Boolean> login(@RequestBody Account account, HttpServletResponse response){
         Account user = accountDao.findByUsername(account.getUsername());
@@ -40,9 +45,14 @@ public class Test {
         return new ResponseEntity<>(true,HttpStatus.OK);
     }
 
-    @GetMapping("/abc")
+    @GetMapping("/server")
     public String fun(){
         return "Up and Running";
+    }
+
+    @GetMapping("/db")
+    public UOM f(){
+        return uomDao.find(1);
     }
 
     @GetMapping("/get")

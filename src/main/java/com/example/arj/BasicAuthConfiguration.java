@@ -41,7 +41,7 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
         // http builder configurations for authorize requests and form login (see below)
         //authenticationManger() is included as DI
         http.cors().and().csrf().disable().authorizeRequests()
-                .antMatchers( "/test/abc").permitAll()    //this part is excluded from firewall
+                .antMatchers( "/test/server","/test/db").permitAll()    //this part is excluded from firewall
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new AuthenticationFilter(authenticationManager()))
