@@ -79,7 +79,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 //        res.addCookie(cookie);
 //        cookie.se
 //        cookie.setHttpOnly(true);   //only accessible by server and not javascript to avoid cross site scripting(XSS) attack
-        res.setHeader("Set-Cookie",HEADER_NAME+"="+token+";SameSite=None;Secure;Max-Age=1800000;");
+        res.setHeader("Set-Cookie",HEADER_NAME+"="+token+";SameSite=None;Max-Age=1800000;");
 
         PrintWriter out = res.getWriter();
         ObjectMapper objectMapper= new ObjectMapper();
