@@ -96,7 +96,8 @@ public class MaterialRequestService {
     public void closeMaterialRequest(int employeeId, int materialRequestId){
         Employee employee = employeeDao.find(employeeId);
         MaterialRequest materialRequest = materialRequestDao.find(materialRequestId);
-
+        materialRequest.setStatus(StatusEnum.CLOSE);
+        materialRequest.setDoCompletion(Date.valueOf(LocalDate.now()));
         logTransaction(ActionEnum.CLOSE, employee, materialRequest);
     }
 
@@ -104,6 +105,8 @@ public class MaterialRequestService {
         Employee employee = employeeDao.find(employeeId);
         MaterialRequest materialRequest = materialRequestDao.find(materialRequestId);
 
+        materialRequest.setStatus(StatusEnum.OPEN);
+        materialRequest.setDoCompletion(null);
         logTransaction(ActionEnum.REOPEN, employee, materialRequest);
     }
 
